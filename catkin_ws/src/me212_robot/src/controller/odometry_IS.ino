@@ -42,8 +42,8 @@ void loop() {
   //////////////////////////////////////////////////////////////////
 
   theta += RADIUS * (dis_R - dis_L) / WIDTH;
-  x += RADIUS * (cos(theta) * dis_R + cos(theta) * dis_L) / 2
-  y += RADIUS * (sin(theta) * dis_R + sin(theta) * dis_L) / 2
+  x += RADIUS * (cos(theta) * dis_R + cos(theta) * dis_L) / 2;
+  y += RADIUS * (sin(theta) * dis_R + sin(theta) * dis_L) / 2;
 
   ///////////////////////////////////////////////////////////////////
   msg.data_length = 3;
