@@ -9,7 +9,7 @@
 int encoder_pos_L, encoder_pos_R;
 int encoder_pre_L, encoder_pre_R;
 float x, y, theta, d_theta;
-float dis_per_tick = 2* PI* RADIUS / CPR;
+float dis_per_tick = 2 * PI * RADIUS / CPR;
 float dis_L, dis_R;
 float pose[3];
 
@@ -41,9 +41,11 @@ void loop() {
   dis_R = dis_per_tick * (encoder_pre_R - encoder_pos_R);
   //////////////////////////////////////////////////////////////////
 
-  theta += RADIUS * (dis_R - dis_L) / WIDTH;
-  x += RADIUS * (cos(theta) * dis_R + cos(theta) * dis_L) / 2;
-  y += RADIUS * (sin(theta) * dis_R + sin(theta) * dis_L) / 2;
+  theta += d_theta;
+
+  theta += (dis_R - dis_L) / WIDTH;
+  x += (cos(theta) * dis_R + cos(theta) * dis_L) / 2;
+  y += (sin(theta) * dis_R + sin(theta) * dis_L) / 2;
 
   ///////////////////////////////////////////////////////////////////
   msg.data_length = 3;
