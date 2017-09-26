@@ -5,7 +5,7 @@ from std_msgs.msg import Float64MultiArray
 from math import pi, radians
 class Tracking:
 	def __init__(self):
-		self.node_name = rospy.get_name()	
+		self.node_name = rospy.get_name()
 		self.state = 1
 		self.trig = None
 		self.motorhat = Adafruit_MotorHAT(addr= 0x60)
@@ -24,12 +24,18 @@ class Tracking:
 		y     = msg.data[1]
 		theta = msg.data[2]
 		theta = theta % (2* pi)
+		self.cbMove(x,y,theta)
 		print x,y,theta
 
-		# stages: 1) straight line,
-		#         2) semi-circle
-		#         3) straight line again.
+	def cbMove(self,x,y,theta):
+		if pass:
+			self.straight()
+		else pass:
+			self.turn()
 
+	def straight():
+
+	def turn():
 
 
 	def custom_shutdown(self):
