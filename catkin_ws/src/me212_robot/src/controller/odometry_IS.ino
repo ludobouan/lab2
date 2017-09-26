@@ -10,7 +10,7 @@ int encoder_pos_L, encoder_pos_R;
 int encoder_pre_L, encoder_pre_R;
 float x, y, theta, d_theta;
 float dis_per_tick = 2* PI* RADIUS / CPR;
-float dis_L, dis_R;  
+float dis_L, dis_R;
 float pose[3];
 
 ros::NodeHandle nh;
@@ -30,7 +30,7 @@ void setup() {
   theta = 0;
   //Serial.begin(57600);
   attachInterrupt(0, Encoder_L, RISING);  //2
-  attachInterrupt(1, Encoder_R, RISING);  //3 
+  attachInterrupt(1, Encoder_R, RISING);  //3
   nh.initNode();
   nh.advertise(odom);
 }
@@ -40,11 +40,10 @@ void loop() {
   dis_L = dis_per_tick * (encoder_pre_L - encoder_pos_L);
   dis_R = dis_per_tick * (encoder_pre_R - encoder_pos_R);
   //////////////////////////////////////////////////////////////////
-  // write your code
 
-  // theta = ???
-  // x = ??? 
-  // y = ???
+  theta += RADIUS * (dis_R - dis_L) / WIDTH;
+  x += RADIUS * (cos(theta) * dis_R + cos(theta) * dis_L) / 2
+  y += RADIUS * (sin(theta) * dis_R + sin(theta) * dis_L) / 2
 
   ///////////////////////////////////////////////////////////////////
   msg.data_length = 3;
@@ -55,7 +54,7 @@ void loop() {
   odom.publish(&msg);
   encoder_pos_L = encoder_pre_L;
   encoder_pos_R = encoder_pre_R;
-  
+
   nh.spinOnce();
   delay(200);   // Update at 5 Hz
 }
@@ -66,7 +65,7 @@ void Encoder_L()
       encoder_pre_L -= 1;
       //Serial.println("Left -1");
     }
-    
+
   else
   {
       encoder_pre_L += 1;
