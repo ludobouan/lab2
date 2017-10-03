@@ -36,7 +36,7 @@ class Tracking:
 		if self.track == 'straight':
 			self.straight()
 		elif self.track == 'turn':
-			self.turn()
+			self.turn_left(0.25)
 		elif self.track == 'stop':
 			self.custom_shutdown()
 
@@ -47,8 +47,9 @@ class Tracking:
 		self.rightMotor.run(1)
 
 
-	def turn(self):
-		self.leftMotor.setSpeed(int(self.left_pwm / 2))
+	def turn_left(self, radius):
+		b = 0.235 / 2
+		self.leftMotor.setSpeed(self.right_pwm * (radius - b) / (radius + b))
 		self.rightMotor.setSpeed(self.right_pwm)
 		self.leftMotor.run(1)
 		self.rightMotor.run(1)
