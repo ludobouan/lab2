@@ -39,8 +39,9 @@ class Tracking:
 		self.leftMotor.setSpeed(self.left_pwm)
 		self.rightMotor.setSpeed(self.right_pwm)
 
-	def turn():
-
+	def turn(self, radius):
+		self.leftMotor.setSpeed(int(self.left_pwm / 2))
+		self.rightMotor.setSpeed(self.right_pwm)
 
 	def custom_shutdown(self):
 		self.leftMotor.run(4)
