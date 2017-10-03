@@ -29,18 +29,16 @@ class Tracking:
 		print x,y,theta
 
 	def cbMove(self,x,y,theta):
-		self.track = 'straight' if x<1 else 'turn'
-		self.track = 'stop' if x<0
+		if x<0: self.track = 'stop'
+		elif x<1: self.track = 'straight'
+		else: self.track = 'stop'
+
 		if self.track == 'straight':
 			self.straight()
 		elif self.track == 'turn':
 			self.turn()
 		elif self.track == 'stop':
-			self.stop()
-
-	def stop(self):
-		self.leftMotor.setSpeed(0)
-		self.rightMotor.setSpeed(0)
+			self.custom_shutdown()
 
 	def straight(self):
 		self.leftMotor.setSpeed(self.left_pwm)
