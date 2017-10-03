@@ -5,7 +5,7 @@ from std_msgs.msg import Float64MultiArray
 from math import pi, radians
 class Tracking:
 	def __init__(self):
-		self.node_name = rospy.get_name()	
+		self.node_name = rospy.get_name()
 		self.state = 1
 		self.trig = None
 		self.motorhat = Adafruit_MotorHAT(addr= 0x60)
@@ -25,6 +25,15 @@ class Tracking:
 		theta = msg.data[2]
 		theta = theta % (2* pi)
 		print x,y,theta
+
+		# 1 straight line
+		if stage == 1:
+			
+		# 2 semi-circle
+		elif stage == 2:
+
+		# 3 straight line
+		elif stage == 3:
 
 		# stages: 1) straight line,
 		#         2) semi-circle
