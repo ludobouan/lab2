@@ -34,7 +34,7 @@ class Tracking:
 		else: self.track = 'turn'
 
 		if self.track == 'straight':
-			self.straight(x,y,theta)
+			self.straight()
 		elif self.track == 'turn':
 			self.turn()
 		elif self.track == 'stop':
