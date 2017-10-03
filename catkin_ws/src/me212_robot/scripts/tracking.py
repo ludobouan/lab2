@@ -16,6 +16,7 @@ class Tracking:
 		self.leftMotor.setSpeed(self.left_pwm)
 		self.rightMotor.setSpeed(self.right_pwm)
 		self.subPosition=rospy.Subscriber("/serial_node/odometry",Float64MultiArray,self.cbPosition)
+		self.track = ''
 
 		rospy.on_shutdown(self.custom_shutdown)
 		rospy.loginfo("[%s] Initialized!" %self.node_name)
@@ -28,12 +29,15 @@ class Tracking:
 		print x,y,theta
 
 	def cbMove(self,x,y,theta):
-		if pass:
-			self.straight()
-		else pass:
+		self.track = 'straight' if x<1 else 'turn'
+		if self.track == 'straight':
+			self.straight(x,y,theta)
+		elif self.track == 'turn':
 			self.turn()
 
-	def straight():
+	def straight(self):
+		self.leftMotor.setSpeed(self.left_pwm)
+		self.rightMotor.setSpeed(self.right_pwm)
 
 	def turn():
 
