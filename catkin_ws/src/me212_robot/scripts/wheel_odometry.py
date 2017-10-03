@@ -47,7 +47,7 @@ class wheelOdometry(object):
                                       "base_link", # robot frame
                                       "map") # base frame
 	def publish_marker(self):
-		points = []
+	    points = []
 	    for i in np.linspace(0, 1):             # generate points of a straight line (length = 1 m)
 	        points.append([i, 0, 0])
 	    for i in np.linspace(-np.pi/2, np.pi/2): # generate points of a semi-circle (r =0.25 m)
