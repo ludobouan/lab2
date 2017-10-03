@@ -11,8 +11,8 @@ class Tracking:
 		self.motorhat = Adafruit_MotorHAT(addr= 0x60)
 		self.leftMotor 	= self.motorhat.getMotor(1)
 		self.rightMotor = self.motorhat.getMotor(2)
-		self.right_pwm = 60
-		self.left_pwm = 60
+		self.right_pwm = 120
+		self.left_pwm = 120
 		self.leftMotor.setSpeed(self.left_pwm)
 		self.rightMotor.setSpeed(self.right_pwm)
 		self.subPosition=rospy.Subscriber("/serial_node/odometry",Float64MultiArray,self.cbPosition)
