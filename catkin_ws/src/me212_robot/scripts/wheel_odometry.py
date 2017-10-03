@@ -47,7 +47,14 @@ class wheelOdometry(object):
                                       "base_link", # robot frame
                                       "map") # base frame
 	def publish_marker(self):
-		points = []	
+		points = []
+		for i in np.linspace(0, 1):              # generate points of a straight line (length = 1 m)
+        	points.append([i, 0, 0])
+      	for i in np.linspace(-np.pi/2, np.pi/2): # generate points of a semi-circle (r =0.25 m)
+        	points.append([np.cos(i)*0.25 + 1, np.sin(i)*0.25 + 0.25, 0])
+      	for i in np.linspace(0, 1):              # generate points of a straight line (length = 1 m)
+        	points.append([i, 0.5, 0])
+
                 #####################################################
 		# generate your trajectory
                 #####################################################
@@ -66,7 +73,7 @@ class wheelOdometry(object):
 
 		n = len(points)
 		sub = 1
-	
+
 		if rgba is not None:
 			marker.color.r, marker.color.g, marker.color.b, marker.color.a = tuple(rgba)
 

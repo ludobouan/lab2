@@ -37,6 +37,7 @@ class Tracking:
 			self.straight(x,y,theta)
 		elif self.track == 'turn':
 			self.turn()
+		elif self.track == 'stop':
 			self.custom_shutdown()
 
 	def straight(self):
