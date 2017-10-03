@@ -31,7 +31,7 @@ class Tracking:
 	def cbMove(self,x,y,theta):
 		if x<0: self.track = 'stop'
 		elif x<1: self.track = 'straight'
-		else: self.track = 'stop'
+		else: self.track = 'turn'
 
 		if self.track == 'straight':
 			self.straight()
